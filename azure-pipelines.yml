@@ -45,5 +45,12 @@ steps:
     testResultsFiles: "**/TEST-*.xml"
     testRunTitle: 'Python $(PYTHON_VERSION)'
     
-- task: PublishBuildArtifacts@1
+- task: CopyFiles@2
+  inputs:
+    contents: '**/*.war'
+    targetFolder: '$(build.artifactStagingDirectory)'
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    artifactName: 'war'
+    pathToPublish: '$(build.artifactStagingDirectory)'
