@@ -39,8 +39,11 @@ steps:
   condition: succeededOrFailed()
   displayName: 'Run tests'
 
-- task: PublishBuildArtifacts@1
+- task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
     testResultsFiles: "**/TEST-*.xml"
     testRunTitle: 'Python $(PYTHON_VERSION)'
+    
+- task: PublishBuildArtifacts@1
+
