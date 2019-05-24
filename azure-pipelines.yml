@@ -39,7 +39,7 @@ steps:
   condition: succeededOrFailed()
   displayName: 'Run tests'
 
-- task: PublishTestResults@2
+- task: PublishBuildArtifacts@1
   condition: succeededOrFailed()
   inputs:
     testResultsFiles: "**/TEST-*.xml"
